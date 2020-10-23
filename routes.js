@@ -3,7 +3,7 @@
 const requestHandler = (req,res) => {
     const {url,method,headers} = req;
 
-    res.setHeader('Content-Type','text/html');
+  
     
     if(url === '/create-user' && method === 'POST')
     {
@@ -16,15 +16,15 @@ const requestHandler = (req,res) => {
 
                 const parseBody  = Buffer.concat(body).toString();
                 console.log(parseBody);
-                res.writeHead(302,{'Location':'/'});
-               return res.end();
-
-            })
+            });
+            res.writeHead(302,{'Location':'/'});
+             res.end();
     }
 
 
     if(url === '/')
     {
+         res.setHeader('Content-Type','text/html');
         res.write(`
         <!DOCTYPE html>
         <html lang="en">
@@ -45,7 +45,7 @@ const requestHandler = (req,res) => {
 
     if(url === '/users')
     {
-          
+            res.setHeader('Content-Type','text/html');
             res.write(`<!DOCTYPE html>
             <html lang="en">
             <head>
@@ -62,7 +62,7 @@ const requestHandler = (req,res) => {
             return res.end();
     }
 
-    // res.setHeader('Content-Type','text/html');
+         res.setHeader('Content-Type','text/html');
         res.write(`<!DOCTYPE html>
         <html lang="en">
         <head>
